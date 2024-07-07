@@ -32,15 +32,14 @@ Using your most comfortable backend framework of your choice, adhere to the foll
   ]
 }
 ```
-
 - Using the schema above, implement user authentication
 
-- User Registration:
+- **User Registration:**
 * Implement an endpoint for user registration
 * Hash the user’s password before storing them in the database.
 * successful response: Return the payload with a ```201``` success status code.
 
-- User Login
+- **User Login**
 * Implement an endpoint for user Login.
 * Use the JWT token returned to access PROTECTED endpoints.
 
@@ -240,7 +239,7 @@ The goal is to ensure the ```POST /auth/register``` endpoint works correctly by 
 ### Directory Structure:
 The test file should be named ```auth.spec.ext``` (ext is the file extension of your chosen language) inside a folder named ```tests```. For ```example tests/auth.spec.ts``` assuming Typescript is being used.
 
-- **Test Scenarios:**
+**Test Scenarios:**
 
 * It Should Register User Successfully with Default Organisation:Ensure a user is registered successfully when no organisation details are provided.
 * Verify the default organisation name is correctly generated (e.g., "John's Organisation" for a user with the first name "John").
