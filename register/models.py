@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from .utils import generate_uuid
@@ -38,3 +39,12 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+class Organisation(models.Model):
+    org_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    users = models.ManyToManyField(User, related_name='organisations')
+
+    def __str__(self):
+        return self.name
