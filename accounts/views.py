@@ -10,7 +10,6 @@ import jwt
 from datetime import datetime, timedelta
 from django.conf import settings
 
-# Create your views here.
 def create_jwt_token(user):
     payload = {
         'userId': user.userId,
@@ -20,7 +19,6 @@ def create_jwt_token(user):
     }
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
     return token
-
 
 class RegisterView(APIView):
     def post(self, request):
@@ -44,7 +42,7 @@ class RegisterView(APIView):
             serializer.validated_data['password'] = make_password(serializer.validated_data['password'])
             user = serializer.save()
 
-            org_name = f"{user.first_name}'s Organisation"
+            org_name = f"{user.firstName}'s Organisation"
             organisation = Organisation.objects.create(name=org_name)
             organisation.users.add(user)
 
